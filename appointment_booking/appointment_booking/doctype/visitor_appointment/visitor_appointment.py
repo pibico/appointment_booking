@@ -96,7 +96,7 @@ def get_availability_data(date, practitioner, department=None):
 	if practitioner_name:
 		# Check if it is Holiday
 		if is_holiday(practitioner_name, date):
-			frappe.throw(_("El {0} no hay servicios".format(date)))
+			frappe.throw(_("El {0} el profesional no ofrece servicios".format(date)))
 
 	# get practitioners schedule
 	if practitioner_obj.practitioner_schedules:
@@ -135,6 +135,10 @@ def get_availability_data(date, practitioner, department=None):
 						if schedule.department == department:
 							slot_details.append({"slot_name":slot_name, "department":schedule.department,
 	                	                                "available_slots":available_slots, 'appointments': appointments})
+						else:
+							slot_details.append({"slot_name":slot_name, "department":'',
+                                                                "available_slots":available_slots, 'appointments': appointments})
+
 					else:
 						slot_details.append({"slot_name":slot_name, "department":schedule.department,
 							"available_slots":available_slots, 'appointments': appointments})

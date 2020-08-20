@@ -112,18 +112,18 @@ var check_and_set_availability = function(frm) {
       'appointment_date': frm.doc.appointment_date
 		});
   
-    frappe.call({
-			"method": "frappe.client.get",
-			args: {
-				doctype: "Appointment Type",
-				name: frm.doc.appointment_type
-			},
-			callback: function (data) {
-				var department = data.message.department;
-        d.set_values({'department': department});
-        frm.toggle_enable('appointment_type', false);
-			}
-		}); 
+    //frappe.call({
+		//	"method": "frappe.client.get",
+		//	args: {
+		//		doctype: "Appointment Type",
+		//		name: frm.doc.appointment_type
+		//	},
+		//	callback: function (data) {
+		//		var department = data.message.department;
+    //    d.set_values({'department': department});
+    //    frm.toggle_enable('appointment_type', false);
+		//	}
+		//}); 
    
 		d.fields_dict["department"].df.onchange = () => {
 			d.set_values({
@@ -138,6 +138,7 @@ var check_and_set_availability = function(frm) {
 						}
 					};
 				};
+        
 			}
 		};
 

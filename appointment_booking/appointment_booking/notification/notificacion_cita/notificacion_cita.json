@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Scheduled\"",
+ "creation": "2020-08-19 18:43:06.030563",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Visitor Appointment",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<div class=\"container row\">\n  <table>\n    <tr>\n      <td style=\"widht: 60%;\">\n      <h4>Cita <b>#{{ doc.name }}</b> reservada</h4>\n      <p><b>Solicitante</b>: {{ doc.visitor_name }}<br>\n      <b>Motivo</b>: {{ doc.appointment_type }}<br>\n      <b>Maxima Reserva</b>: {{ doc.duration }} minutos<br>\n      <b>Fecha</b>: {{ doc.get_formatted('appointment_date') }}<br>\n      <b>Hora</b>: {{ doc.appointment_time }}<br>\n      <b>Servicio</b>: {{ doc.department }}<br>\n      <b>Profesional</b>: {{ doc.practitioner }}<br>\n      <b>Observaciones</b>: <i>{{ doc.notes }}</i><br>\n      <b>Para imprimir</b>: {{ frappe.get_url() }}/Visitor%20Appointment/{{ doc.name }}<br>\n      <b>Recordatorio Activado</b>: \n        {% if doc.appointment_reminder %}\n          S&iacute;\n        {% else %}\n          No\n        {% endif %}  \n      <br>\n      </td>\n      <td style=\"widht: 40%;\">\n        <img src={{ doc.qr_code }} />\n      </td>\n    <tr>\n  </table>\n<p>Le esperamos en el d&iacute;a y hora indicados. Si desea modificar algo envie correo electr&oacute;nico a <b>ventas@pibico.es</b> indicando en el asunto <b>\"Modificaci&oacute;n a Cita #{{ doc.name }}\"</b> o ll&aacute;menos por telefono.<br>Saludos</p>\n</div>",
+ "modified": "2020-08-19 18:44:04.399690",
+ "modified_by": "Administrator",
+ "module": "Appointment Booking",
+ "name": "Notificacion Cita",
+ "owner": "Administrator",
+ "property_value": "Open",
+ "recipients": [
+  {
+   "cc": "{{ doc.visitor }}"
+  }
+ ],
+ "sender": "Notifications",
+ "sender_email": "ventas.pibico@gmail.com",
+ "set_property_after_alert": "status",
+ "subject": "#{{ doc.name }}: Cita Agendada"
+}

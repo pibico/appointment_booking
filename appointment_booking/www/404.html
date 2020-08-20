@@ -1,0 +1,41 @@
+{% extends "templates/web.html" %}
+
+{%- block title -%}{{_("Not Found")}}{%- endblock -%}
+
+{% block page_content %}
+<style>
+.hero-and-content {
+	background-color: #f5f7fa;
+}
+header, footer {
+	display: none;
+}
+html, body {
+	background-color: #f5f7fa;
+}
+{% include "templates/styles/card_style.css" %}
+</style>
+
+<div class="container-fluid" style="background-image: url('assets/Tempo/assets/img/hero-bg.jpg'); height: 100vh;">
+  <div class="section-title" style="margin-top: 120px;">
+    <a href="beauty_es" class="logo mr-auto"><img class="img-fluid" src="assets/Tempo/assets/img/logo.png" width="150px" alt=""></a>
+    <h1 style="color: yellow;"><strong>PibiCo Demo Server</strong></h1>
+  </div>  
+ 
+  <div class='page-card' style="margin-top: -15px; background: transparent;">
+	  <div class='page-card-head'>
+		  <span class='indicator darkgrey' style="color: white;">{{_("Page Missing or Moved")}}</span>
+	  </div>
+	  <p style="color: white;">{{_("The page you are looking for is missing. This could be because it is moved or there is a typo in the link.")}}</p>
+	  <div><a href='/' class='btn btn-primary btn-sm'>{{ _("Home") }}</a></div>
+  </div>
+  <p class='text-muted text-center small' style='margin-top: -20px;'><h2 class="text-center" style="color: white;"><strong>{{ _("Error Code: {0}").format('404') }}</strong></h2></p>
+  
+</div>
+
+<style>
+.hero-and-content {
+	background-color: #f5f7fa;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ heading or "Contact Us"}}{% endblock %}
+
+{% block page_content %}
+<style>
+	.address {
+		line-height: 1.7em;
+	}
+  .row.page-head {
+    display: none !important;
+  }
+</style>
+<div class="container-fluid" style="background-image: url('assets/Tempo/assets/img/hero-bg.jpg'); margin-top: -20px;">
+  <div class="container contact-content" style="height: 100vh;">
+	  {% if introduction %}
+	  <div>
+		  {{ introduction or "" }}<br>
+	  </div>
+    <div class="col-md-12 text-center" style="margin-top: 45px;">
+      <h1><b>Cont&aacute;ctanos</b></h1>
+    </div>  
+    {% endif %}
+    
+	  <div class="row col-md-12" style="top: 5px;">
+      <div class="col-md-12"> 
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-5.661802589893342%2C43.53670579678891%2C-5.657494962215424%2C43.53851213820066&amp;layer=mapnik&amp;marker=43.53760994645552%2C-5.659648776054382" style="border: none;" width="100%" height="180"></iframe><br><small><a href="https://www.openstreetmap.org/?mlat=43.53761&amp;mlon=-5.65965#map=19/43.53761/-5.65965&amp;layers=ND" target="_blank">Ver mapa m&aacute;s grande</a></small><hr>
+      </div>
+		  <div class="col-md-7">
+			  <p id="contact-alert" class="alert alert-warning"
+				  style="display: none;">&nbsp;</p>
+			  <div class="form-group">
+				  <select name="subject" class="form-control">
+				  {% if query_options -%}
+					  {% for option in query_options.split("\n") -%}
+					  <option value="{{ option }}">{{ option }}</option>
+					  {%- endfor %}
+				  {% else %}
+					  <option value="General">General</option>
+				  {% endif %}
+				  </select>
+			  </div>
+			  <div class="form-group">
+				  <input class="form-control" name="email" type="text"
+				  placeholder="{{ _('Your email address') }}" />
+			  </div>
+			  <div class="form-group">
+				  <textarea rows="4" name="message" class="form-control"></textarea>
+			  </div>
+			  <div class="form-group">
+				  <button class="btn btn-primary btn-send">{{ _("Send") }}</button>
+			  </div>
+		  </div>
+		  {% if address_title %}
+		  <div class="col-md-4 col-md-offset-1 address"
+			  	itemscope itemtype="http://schema.org/PostalAddress" style="color: white;">
+			  <h4 style="margin-top: 0px;"><i class="fa fa-map-marker"></i> {{ address_title }}</h4>
+			  {% if address_line1 %}
+				  <span itemprop="streetAddress">{{ address_line1 }}</span><br>
+			  {% endif %}
+			  {% if address_line2 %}
+				  <span itemprop="streetAddress">{{ address_line2 }}</span><br>
+			  {% endif %}
+			  {% if city %}
+				  <span itemprop="addressLocality">{{ city }}</span><br>
+			  {% endif %}
+			  {% if state %}
+				  <span itemprop="addressRegion">{{ state }}</span><br>
+			  {% endif %}
+			  {% if pincode %}
+				  <span itemprop="postalCode">{{ pincode }}</span><br>
+			  {% endif %}
+			  {% if country %}
+				  <span itemprop="addressCountry">{{ country }}</span><br><br>
+			  {% endif %}
+			  {% if phone %}
+				  <i class='fa fa-phone'></i> <span itemprop="telephone">{{ phone }}</span><br>
+			  {% endif %}
+			  {% if email_id %}
+				  <i class='fa fa-envelope'></i> <span itemprop="email">{{ email_id }}</span><br>
+			  {% endif %}
+			  {% if skype %}
+				  <i class='fa fa-skype'></i> <span itemprop="email">{{ skype }}</span><br>
+			  {% endif %}
+
+		  </div>
+		  {% endif %}
+	  </div>
+   
+  </div>
+</div>
+
+<script>
+	{% include "templates/includes/contact.js" %}
+
+// Cookies Policy
+async function loadScript(url) {
+  let response = await fetch(url);
+  let script = await response.text();
+  eval(script);
+};
+let scriptUrl = 'https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js';
+loadScript(scriptUrl);
+
+
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#eaf7f7",
+      "text": "#5c7291"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#56cbdb",
+      "border": "#56cbdb"
+    }
+  },
+  "position": "top",
+  "content": {
+    "message": "En beauty.pibico.es utilizamos cookies propias y de terceros, as&iacute; como los datos de la conexi&oacute;n del usuario. Estas cookies ser&aacute;n utilizadas con la finalidad de gestionar el portal, recabar informaci&oacute;n sobre la utilizaci&oacute;n del mismo, mejorar nuestros servicios y mostrarte publicidad personalizada relacionada con tus preferencias en base a un perfil elaborado a partir de tus h&aacute;bitos y el an&aacute;lisis de tu navegaci&oacute;n (por ejemplo, p&aacute;ginas visitadas, consultas realizadas o links visitados). Puedes configurar o rechazar la utilizaci&oacute;n de cookies yendo a la Configuraci&oacute;n de seguridad de tu Navegador o si deseas obtener informaci&oacute;n detallada sobre c&oacute;mo utilizamos las cookies, o conocer c&oacute;mo deshabilitarlas, puedes consultar la ",
+    "dismiss": "Aceptar",
+    "link": "Politica de cookies",
+    "href": "https://www.pibico.es/privacy"
+  }
+})
+});
+
+AOS.init();
+
+</script>
+
+<!-- Template Main JS File -->
+<script src="assets/Tempo/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="assets/Tempo/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/Tempo/assets/vendor/venobox/venobox.min.js"></script>
+<script src="assets/Tempo/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="assets/Tempo/assets/js/main.js"></script>
+
+{% endblock %}

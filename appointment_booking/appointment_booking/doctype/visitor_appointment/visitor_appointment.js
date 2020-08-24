@@ -10,14 +10,14 @@ frappe.ui.form.on('Visitor Appointment', {
 				}
 			};
 		});
-		frm.set_query("department", function(){
-			return {
-				filters: {
-					"is_group": false,
-					"allow_appointments": true
-				}
-			};
-		});
+		//frm.set_query("department", function(){
+		//	return {
+		//		filters: {
+		//			"is_group": false,
+		//			"allow_appointments": true
+		//		}
+		//	};
+		//});
 		if(frm.doc.status == "Open" && !frm.doc.__islocal){
 			frm.add_custom_button(__('Cancel'), function() {
 				btn_update_status(frm, "Cancelled");

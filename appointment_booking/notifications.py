@@ -9,7 +9,7 @@ def get_notification_config():
 		"for_doctype": {
 			"Error Log": {"seen": 0},
 			"Communication": {"status": "Open", "communication_type": "Communication"},
-      "Visitor Appointment": {"status": "Open"},
+			"Visitor Appointment": {"status": "Open"},
 			"ToDo": "frappe.core.notifications.get_things_todo",
 			"Event": "frappe.core.notifications.get_todays_events",
 			"Error Snapshot": {"seen": 0, "parent_error_snapshot": None},

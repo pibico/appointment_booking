@@ -93,13 +93,13 @@ notification_config = "appointment_booking.notifications.get_notification_config
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"appointment_booking.tasks.all"
 # 	],
-# 	"daily": [
-# 		"appointment_booking.tasks.daily"
-# 	],
+	"daily": [
+		"appointment_booking.appointment_booking.doctype.visitor_appointment.tasks.set_appointment_as_pending"
+	] #,
 # 	"hourly": [
 # 		"appointment_booking.tasks.hourly"
 # 	],
@@ -109,7 +109,7 @@ notification_config = "appointment_booking.notifications.get_notification_config
 # 	"monthly": [
 # 		"appointment_booking.tasks.monthly"
 # 	]
-# }
+}
 
 # Testing
 # -------

@@ -64,7 +64,7 @@ app_include_js = [
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "appointment_booking.notifications.get_notification_config"
+notification_config = "appointment_booking.notifications.get_notification_config"
 
 # Permissions
 # -----------

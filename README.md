@@ -1,4 +1,4 @@
-## Appointment Booking
+## Appointment Booking (DEPRECATED)
 
 App based on Frame Framework for Booking Appointments only valid for version 11
 
